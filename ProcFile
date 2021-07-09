@@ -1,1 +1,1 @@
-web: gunicorn fakeEcomAPIs.wsgi
+web: gunicorn fakeEcomAPIs.wsgi --log-file -
