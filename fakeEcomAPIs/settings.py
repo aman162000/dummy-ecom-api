@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
+    'cloudinary_storage',
+    'cloudinary',
+    'clear_cache',
     'rest_framework',
+    'rest_framework_api_key',
     'rest_framework.authtoken'
 ]
 
@@ -47,8 +51,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated', )
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     "rest_framework_api_key.permissions.HasAPIKey",
+    #      )
 }
 
 MIDDLEWARE = [
@@ -88,8 +93,18 @@ WSGI_APPLICATION = 'fakeEcomAPIs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'dcqsghj6g7m0pf',
+
+        'USER': 'eczikswflozadp',
+
+        'PASSWORD': '0a9486b8677edd4919ff94f6fca491cbfefed3008d6c496dbcc47c8c2e52d425',
+
+        'HOST': 'ec2-54-236-137-173.compute-1.amazonaws.com',
+
+        'PORT': '5432',
+
     }
 }
 
@@ -131,12 +146,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dkr2ixh3r',
+    'API_KEY': '937519582547829',
+    'API_SECRET': '552QxiO8iDftmXrD30gr7tmX4b8'
+}
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Custom Header for API KEY
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'borseaman16@gmail.com'
+EMAIL_HOST_PASSWORD ='aman*2001'
 
 django_heroku.settings(locals())

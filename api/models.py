@@ -25,11 +25,12 @@ class Product(models.Model):
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_desc = models.TextField(blank=False, null=False)
     product_price = models.DecimalField(blank=False, null=False, max_digits=10, decimal_places=2)
-    product_img_sm = models.ImageField(upload_to='images/150/',blank=True)
-    product_img_md = models.ImageField(upload_to='images/300/',blank=True)
-    product_img_lg = models.ImageField(upload_to='images/600/',blank=True)
+    product_img_sm = models.ImageField(upload_to='images-150',blank=True)
+    product_img_md = models.ImageField(upload_to='images-300',blank=True)
+    product_img_lg = models.ImageField(upload_to='images-600',blank=True)
     product_rating = models.IntegerField(default=0,validators=[MaxValueValidator(5), MinValueValidator(0)])
     product_quantity = models.IntegerField(default=0,validators=[MinValueValidator(0)])
+    product_sales = models.DecimalField(decimal_places=0,max_digits=1000,default=0)
 
     def __str__(self):
         return self.product_name
