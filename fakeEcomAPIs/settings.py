@@ -12,21 +12,25 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dotenv
 import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+dotenv_file = os.path.join(BASE_DIR, ".env")
 
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=vfjhbs0fe2yr-4gp%&-+&_#48nyr66u43@3#rc7*3h0#2+=j)'
-
+SECRET_KEY = os.environ['SECRET_KEY']
+# 'dbc66189957bf9db9fb0faa8a4c64d1c5864bbe007cab015'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ['DEBUG'] == 'True')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['dummy-ecom-api.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -44,13 +48,17 @@ INSTALLED_APPS = [
     'clear_cache',
     'rest_framework',
     'rest_framework_api_key',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'django_filters'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
     # 'DEFAULT_PERMISSION_CLASSES': (
     #     "rest_framework_api_key.permissions.HasAPIKey",
     #      )
@@ -95,13 +103,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'dcqsghj6g7m0pf',
+        'NAME': os.environ['DB_NAME'],
 
-        'USER': 'eczikswflozadp',
+        'USER': os.environ['DB_USER'],
 
-        'PASSWORD': '0a9486b8677edd4919ff94f6fca491cbfefed3008d6c496dbcc47c8c2e52d425',
+        'PASSWORD': os.environ['DB_PASSWORD'],
 
-        'HOST': 'ec2-54-236-137-173.compute-1.amazonaws.com',
+        'HOST': os.environ['DB_HOST'],
 
         'PORT': '5432',
 
@@ -155,9 +163,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dkr2ixh3r',
-    'API_KEY': '937519582547829',
-    'API_SECRET': '552QxiO8iDftmXrD30gr7tmX4b8'
+    'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    'API_KEY': os.environ['API_KEY'],
+    'API_SECRET': os.environ['API_SECRET']
 }
 MEDIA_URL = '/media/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
@@ -169,7 +177,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'borseaman16@gmail.com'
-EMAIL_HOST_PASSWORD ='aman*2001'
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 django_heroku.settings(locals())
