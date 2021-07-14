@@ -11,10 +11,15 @@ class FiltersWhichAreNotProvidedByLibrary(FilterSet):
     rating_min = filters.NumberFilter(field_name='product_rating', lookup_expr='gte')
     rating_max = filters.NumberFilter(field_name='product_rating', lookup_expr='lte')
     product_category = filters.CharFilter(method='get_category_wise_data')
+    limit = filters.NumberFilter(method='get_data_limitwise')
     class Meta:
         model = Product
         fields = ['product_name','product_price']
 
     def get_category_wise_data(self,queryset,name,value):
         queryset = queryset.filter(product_category__category_id=value.lower())
+        return queryset
+
+    def get_data_limitwise(self,queryset,name,value):
+        queryset = queryset[int(value) :]
         return queryset

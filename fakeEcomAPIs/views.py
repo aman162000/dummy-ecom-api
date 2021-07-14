@@ -1,9 +1,12 @@
+from django.shortcuts import render
 from django.template import Context
 from django.template.loader import render_to_string, get_template
 from django.core.mail import EmailMessage
 from rest_framework_api_key.models import APIKey
-#
-#
+
+def index(request):
+    return render(request,template_name='index.html')
+
 # def sendmail(request):
 #     ctx = {
 #         'email': "borse.aman@rediffmail.com",

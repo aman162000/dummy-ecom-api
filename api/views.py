@@ -1,5 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
+from collections import OrderedDict
 from rest_framework.decorators import permission_classes
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
@@ -8,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework import generics
 from django.views.decorators.vary import vary_on_cookie, vary_on_headers
 from django.http import JsonResponse
+from rest_framework.pagination import LimitOffsetPagination,PageNumberPagination
 from .models import Product, Category
 from fakeEcomAPIs.exceptions import CustomApiPermission
 from rest_framework.authtoken.models import Token
@@ -37,3 +39,4 @@ class ProductData(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filter_class = FiltersWhichAreNotProvidedByLibrary
     ordering_fields = ['product_name', 'product_price']
+    pagination_class = PageNumberPagination
