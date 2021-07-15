@@ -33,7 +33,7 @@ class CategoryData(generics.ListAPIView):
 
 
 class ProductData(generics.ListAPIView):
-    # permission_classes = [CustomApiPermission]
+    permission_classes = [CustomApiPermission]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = [DjangoFilterBackend, OrderingFilter]

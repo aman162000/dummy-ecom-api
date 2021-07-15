@@ -114,14 +114,20 @@
     </div>
     <div class="custom-container container">
       <h2 class="custom-heading">Get you API key from your email!</h2>
+        {% if messages %}
+        {% for i in messages %}
+        <h5 class="mt-2" style="color: #ffdf00">*{{ i }}</h5>
+        {% endfor %}
+        {% endif %}
       <form
         class="mt-3 d-flex align-items-center justify-content-start"
         method="POST"
-        action=""
-      >
+        action="/"
+      >{% csrf_token %}
         <input
           id="email"
           type="text"
+          name="email"
           class="custom-text"
           placeholder="E-mail"
         />

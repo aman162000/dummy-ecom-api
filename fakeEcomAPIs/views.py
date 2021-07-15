@@ -2,19 +2,43 @@ from django.shortcuts import render
 from django.template import Context
 from django.template.loader import render_to_string, get_template
 from django.core.mail import EmailMessage
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.contrib import messages
 from rest_framework_api_key.models import APIKey
 
 def index(request):
-    return render(request,template_name='index.html')
+    if request.method == "POST":
+        email = request.POST.get("email")
+        validEmail = False
+        try:
+            validate_email(email)
+            validEmail = True
+        except ValidationError:
+            validEmail = False
+            messages.error(request,"E-mail required or Check Your e-mail.")
+            return render(request, template_name='index.html')
 
-# def sendmail(request):
-#     ctx = {
-#         'email': "borse.aman@rediffmail.com",
-#         'api': "qwertyuiopasdfghjklzxcvbn"
-#            }
-#     message = get_template('email.html').render(ctx)
-#     msg = EmailMessage('API key for dummy E-com data', message, 'borseaman16@gmail.com', ['borseaman16@gmail.com'],
-#                        )
-#     msg.content_subtype = "html"  # Main content is now text/html
-#     msg.send()
-#     print("Mail successfully sent")
+        if sendmail(email,validEmail):
+            messages.info(request, "E-mail sent successfully.")
+        else:
+            messages.error(request, "An error occurred. Try again later.")
+        return render(request, template_name='index.html')
+
+    else:
+        return render(request,template_name='index.html')
+
+def sendmail(email,isValid):
+    if isValid:
+        key = APIKey.objects.create_key(name=email)
+        ctx = {
+            'api': key[1]
+               }
+        message = get_template('email.html').render(ctx)
+        msg = EmailMessage('API key for dummy E-com data', message, 'borseaman16@gmail.com', [email],
+                           )
+        msg.content_subtype = "html"  # Main content is now text/html
+        msg.send()
+        return True
+    else:
+        return False
