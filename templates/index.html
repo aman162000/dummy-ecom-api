@@ -1,138 +1,136 @@
-{% extends "base.html" %}
-
-
-{% load static %}
-
-{% block content %}
-    <div
-      class="
-        custom-alert
-        alert alert-warning alert-dismissible
-        fade
-        show
-        text-center
-      "
-      role="alert"
-    >
-      <strong>Dummy Ecom API</strong> is free for use.
-      <a href="#" class="alert-link">Donate</a> to maintain this project.
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
+{% extends "base.html" %} {% load static %} {% block content %}
+<div
+  class="
+    custom-alert
+    alert alert-warning alert-dismissible
+    fade
+    show
+    text-center
+  "
+  role="alert"
+>
+  <strong>Dummy Ecom API</strong> is free for use.
+  <a href="#" class="alert-link">Donate</a> to maintain this project.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="container mt-3">
+  <nav class="navbar">
+    <div class="logo">
+      <i style="height: 50%; width: 50%" class="fas fa-tags"></i>
     </div>
-    <div class="container mt-3">
-      <nav class="navbar">
-        <div class="logo">
-          <i style="height: 50%; width: 50%" class="fas fa-tags"></i>
-        </div>
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <li><a class="active" href="/">Home</a></li>
-            <li><a target="_blank" href="#">Documentation</a></li>
-            <li><a target="_blank" href="https://github.com/aman162000/dummy-ecom-api">Github</a></li>
-            <li><a href="#email">API</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="container my-4">
-      <div class="row d-flex align-items-center">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <img class="custom-svg" src="https://res.cloudinary.com/dkr2ixh3r/image/upload/v1626337360/static/images/4040106_uzg8oy.svg" alt="" srcset="" />
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 mt-4">
-          <h1 class="text-">Dummy Ecom API</h1>
-          <p class="text-left">
-            Dummy Ecom REST Api for e-commerce or shopping website or app
-            prototype.
-          </p>
-          <div class="d-inline-flex justify-content-start">
-            <button class="btn btn-outline-warning btn-lg">
-              Docs <i class="fas fa-book"></i>
-            </button>
-            <a
-              target="_blank"
-              href="https://github.com/aman162000/dummy-ecom-api"
-              class="btn btn-outline-warning btn-lg mx-3"
-            >
-              Github <i class="fab fa-github"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="custom-container container my-5">
-      <h1 class="custom-heading">Why Dummy Ecom Api?</h1>
-      <p class="text-justify">
-        A Dummy API is useful during development and testing when live data is
-        either unavailable or unreliable. As someone who wants to practise
-        developing e-commerce websites, it might be hard to find any dummy data
-        to use as a placeholder throughout the development phase. Some
-        e-commerce platform provide Apis but, these APIs are complex in
-        implementation and includes Authorization.
-      </p>
-    </div>
-    <div class="custom-container container my-5">
-      <h1 class="custom-heading">Features</h1>
-      <ul class="features-list">
-        <li>Supports Pagination.</li>
-        <li>Supports Dummy users.</li>
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+      <ul>
+        <li><a class="active" href="/">Home</a></li>
+        <li><a target="_blank" href="#">Documentation</a></li>
         <li>
-          Supports filter like, product name, price range, ratings range, total
-          sales, category.
-        </li>
-        <li>Supports dummy cart of products.</li>
-        <li>Supports Token authentication.</li>
-        <li>Each products has 3 different size of images.</li>
-      </ul>
-    </div>
-    <div class="custom-container container my-5">
-      <h1 class="custom-heading">Caveats</h1>
-      <ul class="features-list">
-        <li>
-          API key is required -<a href="#email" style="color: #ffdf00"
-            >get it now!</a
+          <a target="_blank" href=" {% static 'images/4040106.svg' %}"
+            >Github</a
           >
         </li>
+        <li><a href="#email">API</a></li>
       </ul>
     </div>
-    <div class="custom-container container my-5">
-      <h1 class="custom-heading">Base URL</h1>
-      <ul class="features-list text-monospace">
-        <li>https://dummy-ecom-api.herokuapp.com</li>
-      </ul>
+  </nav>
+</div>
+<div class="container my-4">
+  <div class="row d-flex align-items-center">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <!-- <img class="custom-svg" src="https://res.cloudinary.com/dkr2ixh3r/image/upload/v1626337360/static/images/4040106_uzg8oy.svg" alt="" srcset="" /> -->
+      <img
+        class="custom-svg"
+        src="https://res.cloudinary.com/dkr2ixh3r/image/upload/v1626337360/static/images/4040106_uzg8oy.svg"
+        alt=""
+        srcset=""
+      />
     </div>
-    <div class="custom-container container">
-      <h2 class="custom-heading">Get you API key from your email!</h2>
-        {% if messages %}
-        {% for i in messages %}
-        <h5 class="mt-2" style="color: #ffdf00">*{{ i }}</h5>
-        {% endfor %}
-        {% endif %}
-      <form
-        class="mt-3 d-flex align-items-center justify-content-start"
-        method="POST"
-        action="/"
-      >{% csrf_token %}
-        <input
-          id="email"
-          type="text"
-          name="email"
-          class="custom-text"
-          placeholder="E-mail"
-        />
-        <button class="btn btn-outline-warning btn-lg ml-4">Submit</button>
-      </form>
+    <div class="col-lg-6 col-md-6 col-sm-12 mt-4">
+      <h1 class="text-">Dummy Ecom API</h1>
+      <p class="text-left">
+        Dummy Ecom REST Api for e-commerce or shopping website or app prototype.
+      </p>
+      <div class="d-inline-flex justify-content-start">
+        <button class="btn btn-outline-warning btn-lg">
+          Docs <i class="fas fa-book"></i>
+        </button>
+        <a
+          target="_blank"
+          href="https://github.com/aman162000/dummy-ecom-api"
+          class="btn btn-outline-warning btn-lg mx-3"
+        >
+          Github <i class="fab fa-github"></i>
+        </a>
+      </div>
     </div>
+  </div>
+</div>
+<div class="custom-container container my-5">
+  <h1 class="custom-heading">Why Dummy Ecom Api?</h1>
+  <p class="text-justify">
+    A Dummy API is useful during development and testing when live data is
+    either unavailable or unreliable. As someone who wants to practise
+    developing e-commerce websites, it might be hard to find any dummy data to
+    use as a placeholder throughout the development phase. Some e-commerce
+    platform provide Apis but, these APIs are complex in implementation and
+    includes Authorization.
+  </p>
+</div>
+<div class="custom-container container my-5">
+  <h1 class="custom-heading">Features</h1>
+  <ul class="features-list">
+    <li>Supports Pagination.</li>
+    <li>Supports Dummy users.</li>
+    <li>
+      Supports filter like, product name, price range, ratings range, total
+      sales, category.
+    </li>
+    <li>Supports dummy cart of products.</li>
+    <li>Supports Token authentication.</li>
+    <li>Each products has 3 different size of images.</li>
+  </ul>
+</div>
+<div class="custom-container container my-5">
+  <h1 class="custom-heading">Caveats</h1>
+  <ul class="features-list">
+    <li>
+      API key is required -<a href="#email" style="color: #ffdf00"
+        >get it now!</a
+      >
+    </li>
+  </ul>
+</div>
+<div class="custom-container container my-5">
+  <h1 class="custom-heading">Base URL</h1>
+  <ul class="features-list text-monospace">
+    <li>https://dummy-ecom-api.herokuapp.com</li>
+  </ul>
+</div>
+<div class="custom-container container">
+  <h2 class="custom-heading">Get you API key from your email!</h2>
+  {% if messages %} {% for i in messages %}
+  <h5 class="mt-2" style="color: #ffdf00">*{{ i }}</h5>
+  {% endfor %} {% endif %}
+  <form
+    class="mt-3 d-flex align-items-center justify-content-start"
+    method="POST"
+    action="/"
+  >
+    {% csrf_token %}
+    <input
+      id="email"
+      type="text"
+      name="email"
+      class="custom-text"
+      placeholder="E-mail"
+    />
+    <button class="btn btn-outline-warning btn-lg ml-4">Submit</button>
+  </form>
+</div>
 
 {% endblock %}

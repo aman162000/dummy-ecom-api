@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.template import Context
 from django.template.loader import render_to_string, get_template
 from django.core.mail import EmailMessage
@@ -6,6 +6,9 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from rest_framework_api_key.models import APIKey
+
+
+#TODO add captcha in email submission.
 
 def index(request):
     if request.method == "POST":
@@ -17,13 +20,13 @@ def index(request):
         except ValidationError:
             validEmail = False
             messages.error(request,"E-mail required or Check Your e-mail.")
-            return render(request, template_name='index.html')
+            return redirect("/#email")
 
         if sendmail(email,validEmail):
             messages.info(request, "E-mail sent successfully.")
         else:
             messages.error(request, "An error occurred. Try again later.")
-        return render(request, template_name='index.html')
+        return redirect("/#email")
 
     else:
         return render(request,template_name='index.html')

@@ -28,7 +28,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ['SECRET_KEY']
 # 'dbc66189957bf9db9fb0faa8a4c64d1c5864bbe007cab015'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =(os.environ['DEBUG'] == 'True')
+DEBUG =(os.environ['DEBUG'] == 'False')
 
 ALLOWED_HOSTS = ['dummy-ecom-api.herokuapp.com','127.0.0.1']
 
