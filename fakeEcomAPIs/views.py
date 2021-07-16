@@ -47,5 +47,5 @@ def sendmail(email,isValid):
         return False
 
 
-def handler404_page(request, *args, **kwargs):
-    return render(request,template_name="404.html",status=404)
+def error_page(request,exception):
+    return render(request,template_name="404.html")
