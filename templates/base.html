@@ -24,26 +24,77 @@
 
     <!-- <link rel="stylesheet" href="https://res.cloudinary.com/dkr2ixh3r/raw/upload/v1626337359/static/css/style_v5hmj1.css" /> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block style %}
+    <style></style>
 
+    {% endblock style %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dummy Ecom Api</title>
   </head>
   <body>
+    <div
+      class="
+        custom-alert
+        alert alert-warning alert-dismissible
+        fade
+        show
+        text-center
+      "
+      role="alert"
+    >
+      <strong>Dummy Ecom API</strong> is free for use.
+      <a href="#" class="alert-link">Donate</a> to maintain this project.
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="container mt-3">
+      <nav class="navbar">
+        <div class="logo">
+          <i style="height: 50%; width: 50%" class="fas fa-tags"></i>
+        </div>
+        <a href="#" class="toggle-button">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="#email">API</a></li>
+
+            <li><a target="_blank" href="#">Documentation</a></li>
+
+            <li>
+              <a target="_blank" href="https://github.com/aman162000/"
+                >Github</a
+              >
+            </li>
+            <li><a href="#footer">About</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     {% block content %} {% endblock %}
 
-    <div class="footer my-5">
+    <div id="footer" class="footer mt-5 mb-3">
       <p class="text-center font-weight-bold">
         Made with <i style="color: red" class="fas fa-heart"></i> by Aman
       </p>
       <p class="text-center">
         Suggestions, Contributions, and feature suggestions are very welcome.
         <br />
-        Visit the<a
+        Visit the
+        <a
           target="_blank"
           style="color: #ffdf00"
           href="https://github.com/aman162000/dummy-ecom-api"
-        >
-          repository</a
+          >repository</a
         >
         and feel free to check my todo list for contributions.
       </p>
@@ -68,6 +119,14 @@
             ><i class="social fab fa-instagram-square"></i
           ></a>
         </div>
+      </div>
+      <div class="attribution mt-3">
+        <a
+          style="color: #ffdf00"
+          target="_blank"
+          href="https://storyset.com/online"
+          >Online illustrations by Storyset</a
+        >
       </div>
     </div>
     <!-- <script src="https://res.cloudinary.com/dkr2ixh3r/raw/upload/v1626337359/static/js/script_wk5oky.js"></script> -->

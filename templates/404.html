@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<style>
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+</style>
+{% endblock style %} {% block content %}
+<div class="container mt-2">
+  <img
+    class="pt-5 mx-auto d-block"
+    src="{% static 'images/404_vectr2.svg' %}"
+    alt=""
+    srcset=""
+    width="60%"
+  />
+</div>
+<div class="d-flex">
+  <a class="mx-auto btn btn-lg btn-outline-warning" href="/">
+    <i class="mr-2 fas fa-arrow-circle-left"></i>Go Back</a
+  >
+</div>
+
+{% endblock content %}
