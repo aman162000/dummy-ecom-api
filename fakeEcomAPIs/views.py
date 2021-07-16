@@ -8,8 +8,6 @@ from django.contrib import messages
 from rest_framework_api_key.models import APIKey
 
 
-#TODO add captcha in email submission.
-
 def index(request):
     if request.method == "POST":
         email = request.POST.get("email")
@@ -22,11 +20,15 @@ def index(request):
             messages.error(request,"E-mail required or Check Your e-mail.")
             return redirect("/#email")
 
+        
         if sendmail(email,validEmail):
             messages.info(request, "E-mail sent successfully.")
+            return redirect("/#email")
+
         else:
             messages.error(request, "An error occurred. Try again later.")
-        return redirect("/#email")
+            return redirect("/#email")
+        
 
     else:
         return render(request,template_name='index.html')
@@ -36,7 +38,7 @@ def sendmail(email,isValid):
         key = APIKey.objects.create_key(name=email)
         ctx = {
             'api': key[1]
-               }
+             }
         message = get_template('email.html').render(ctx)
         msg = EmailMessage('API key for dummy E-com data', message, 'borseaman16@gmail.com', [email],
                            )
