@@ -51,3 +51,4 @@ def sendmail(email,isValid):
 
 def error_page(request,exception):
     return render(request,template_name="404.html")
+    
