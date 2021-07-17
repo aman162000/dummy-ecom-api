@@ -35,10 +35,10 @@ class CategoryData(generics.ListAPIView):
 
 
 class ProductData(generics.ListAPIView):
-    permission_classes = [CustomApiPermission]
+    # permission_classes = [CustomApiPermission]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filter_class = FiltersWhichAreNotProvidedByLibrary
-    ordering_fields = ['product_name', 'product_price']
+    ordering_fields = ['product_name', 'product_price', 'product_sales']
     pagination_class = PageNumberPagination
