@@ -12,12 +12,12 @@ from django.http import JsonResponse
 from rest_framework.pagination import LimitOffsetPagination,PageNumberPagination
 from .models import Product, Category
 from fakeEcomAPIs.exceptions import CustomApiPermission
-from rest_framework.authtoken.models import Token
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authtoken.models import Token, TokenProxy
 from .serializer import ProductSerializer, CategorySerializer, LoginSerializer
 from fakeEcomAPIs.filters import FiltersWhichAreNotProvidedByLibrary
 
 #TODO mRErvma8Brzh9B5
-
 
 class TokenLogin(APIView):
 
@@ -28,6 +28,12 @@ class TokenLogin(APIView):
         token, created = Token.objects.get_or_create(user=user)
         return Response({"Token": token.key}, status=200)
 
+class TokenLogout(APIView):
+    authentication_classes = (TokenAuthentication,)
+
+    def post(self, request):
+        Token.objects.get(user=request.user).delete()
+        return Response({"message":"User Logged out successfully"}, status=200)
 
 class CategoryData(generics.ListAPIView):
     serializer_class = CategorySerializer
@@ -35,7 +41,7 @@ class CategoryData(generics.ListAPIView):
 
 
 class ProductData(generics.ListAPIView):
-    # permission_classes = [CustomApiPermission]
+    permission_classes = [CustomApiPermission]
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     filter_backends = [DjangoFilterBackend, OrderingFilter]
