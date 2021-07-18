@@ -14,3 +14,30 @@ async function copyBase_URL() {
   btn.classList.add("btn-warning");
   btn.innerText = "Copied!";
 }
+
+async function getAPIlink() {
+  var a = document.getElementById("API-ID");
+  a.href = window.location.origin + "#email";
+}
+async function getABOUTlink() {
+  var a = document.getElementById("About-ID");
+  a.href = window.location.origin + "#footer";
+}
+
+async function copy_Addr() {
+  var but = document.getElementsByClassName("btn-address");
+  var txt = document.getElementsByClassName("c-address");
+
+  for (let x = 0; x < but.length; x++) {
+    but[x].addEventListener(
+      "click",
+      async function () {
+        await navigator.clipboard.writeText(txt[x].innerText);
+        but[x].classList.remove("btn-outline-warning");
+        but[x].classList.add("btn-warning");
+        but[x].innerText = "Copied!";
+      },
+      false
+    );
+  }
+}

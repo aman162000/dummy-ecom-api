@@ -1,5 +1,5 @@
 from django_filters import FilterSet,filters
-from api.models import Product
+from api.models import Product, Category
 
 class FiltersWhichAreNotProvidedByLibrary(FilterSet):
     id = filters.NumberFilter(field_name='id',lookup_expr='exact')
@@ -21,5 +21,11 @@ class FiltersWhichAreNotProvidedByLibrary(FilterSet):
         return queryset
 
     def get_data_limitwise(self,queryset,name,value):
-        queryset = queryset[int(value) :]
+        queryset = queryset[0:int(value)]
         return queryset
+
+
+class CategoryFilter(FilterSet):
+    class Meta:
+        model = Category
+        fields = ['category_name','id']

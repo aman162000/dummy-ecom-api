@@ -5,6 +5,8 @@ from rest_framework.decorators import permission_classes
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from rest_framework.response import Response
+import json
+from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework import generics
 from django.views.decorators.vary import vary_on_cookie, vary_on_headers
@@ -15,7 +17,7 @@ from fakeEcomAPIs.exceptions import CustomApiPermission
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token, TokenProxy
 from .serializer import ProductSerializer, CategorySerializer, LoginSerializer
-from fakeEcomAPIs.filters import FiltersWhichAreNotProvidedByLibrary
+from fakeEcomAPIs.filters import FiltersWhichAreNotProvidedByLibrary, CategoryFilter
 
 #TODO mRErvma8Brzh9B5
 
@@ -36,9 +38,12 @@ class TokenLogout(APIView):
         return Response({"message":"User Logged out successfully"}, status=200)
 
 class CategoryData(generics.ListAPIView):
+    permission_classes = [CustomApiPermission]
     serializer_class = CategorySerializer
+    filter_class = CategoryFilter
     queryset = Category.objects.all()
-
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    ordering_fields = ['category_name',]
 
 class ProductData(generics.ListAPIView):
     permission_classes = [CustomApiPermission]
@@ -48,3 +53,12 @@ class ProductData(generics.ListAPIView):
     filter_class = FiltersWhichAreNotProvidedByLibrary
     ordering_fields = ['product_name', 'product_price', 'product_sales']
     pagination_class = PageNumberPagination
+
+
+class UserData(APIView):
+    permission_classes = [CustomApiPermission]
+
+    def get(self,request):
+        f = open (f'{settings.BASE_DIR}\\templates\\users.json', "r")
+        user = json.load(f)
+        return JsonResponse(user,safe=False)

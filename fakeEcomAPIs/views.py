@@ -48,6 +48,8 @@ def sendmail(email,isValid):
     else:
         return False
 
+def donate(request):
+    return render(request,template_name="donation.html")
 
 def error_page(request,exception):
     return render(request,template_name="404.html")

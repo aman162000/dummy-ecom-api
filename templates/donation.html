@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<style>
+  .qr-code {
+    display: block;
+    width: 90%;
+    height: 60%;
+  }
+  .custom-container {
+    padding: 10% !important;
+  }
+  .crypto-address {
+    color: #ffc727;
+    margin-top: 2%;
+    font-family: "Courier New", Courier, monospace;
+  }
+</style>
+{% endblock style %} {% block content %}
+
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-12 col-md-4 col-lg-4 my-2">
+      <div class="custom-container container">
+        <img
+          class="mx-auto qr-code"
+          src="{% static 'images/qr-code.png' %}"
+          alt=""
+          srcset=""
+        />
+        <div class="crypto-address text-break text-center fw-bolder">
+          <h5 class="c-address">1FwFqqh71mUTENcRe9q4s9AWFgoc8BA9ZU</h5>
+        </div>
+        <button
+          onclick="copy_Addr()"
+          class="btn-address my-3 btn mx-auto d-block btn-outline-warning"
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4 my-2">
+      <div class="mx-auto custom-container container">
+        <img
+          class="mx-auto qr-code"
+          src="{% static 'images/qr-code.png' %}"
+          alt=""
+          srcset=""
+        />
+        <div class="crypto-address text-break text-center fw-bolder">
+          <h5 class="c-address">2FwFqqh71mUTENcRe9q4s9AWFgoc8BA9ZU</h5>
+        </div>
+        <button
+          onclick="copy_Addr()"
+          class="btn-address my-3 btn mx-auto d-block btn-outline-warning"
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4 my-2">
+      <div class="mx-auto custom-container container">
+        <img
+          class="mx-auto qr-code"
+          src="{% static 'images/qr-code.png' %}"
+          alt=""
+          srcset=""
+        />
+        <div class="crypto-address text-break text-center fw-bolder">
+          <h5 class="c-address">3FwFqqh71mUTENcRe9q4s9AWFgoc8BA9ZU</h5>
+        </div>
+        <button
+          onclick="copy_Addr()"
+          class="btn-address my-3 btn mx-auto d-block btn-outline-warning"
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
