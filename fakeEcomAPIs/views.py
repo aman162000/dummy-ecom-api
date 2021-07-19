@@ -5,8 +5,9 @@ from django.core.mail import EmailMessage
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
+from django.conf import settings
 from rest_framework_api_key.models import APIKey
-
+from django.shortcuts import HttpResponse
 
 def index(request):
     if request.method == "POST":
@@ -53,4 +54,6 @@ def donate(request):
 
 def error_page(request,exception):
     return render(request,template_name="404.html")
-    
+
+def sitemap_page(request):
+    return HttpResponse(open(f'{settings.BASE_DIR}\\templates\\sitemap.xml').read(),content_type='text/xml')

@@ -9,6 +9,7 @@ handler404 = error_page
 
 urlpatterns = [
     path('',index,name="index"),
+    path('sitemap.xml',sitemap_page,name="sitemap"),
     path('donation/', donate, name='donation'),
     path('admin/', admin.site.urls),
     path('api/',include('api.urls'))
