@@ -11,7 +11,10 @@
   .crypto-address {
     color: #ffc727;
     margin-top: 2%;
+  }
+  .c-address {
     font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
   }
 </style>
 {% endblock style %} {% block content %}
@@ -22,12 +25,12 @@
       <div class="custom-container container">
         <img
           class="mx-auto qr-code"
-          src="{% static 'images/qr-code.png' %}"
-          alt=""
+          src="{% static 'images/qr-code-btc.png' %}"
+          alt="Qr code of bicoin address"
           srcset=""
         />
         <div class="crypto-address text-break text-center fw-bolder">
-          <h5 class="c-address">1FwFqqh71mUTENcRe9q4s9AWFgoc8BA9ZU</h5>
+          <h5 class="c-address">bc1qd8l7z3ncg3p8mkexe39rd8e0gduj9yc3lzwk8x</h5>
         </div>
         <button
           onclick="copy_Addr()"
@@ -41,12 +44,12 @@
       <div class="mx-auto custom-container container">
         <img
           class="mx-auto qr-code"
-          src="{% static 'images/qr-code.png' %}"
-          alt=""
+          src="{% static 'images/qr-code-ether.png' %}"
+          alt="Qr code of ethereum address"
           srcset=""
         />
         <div class="crypto-address text-break text-center fw-bolder">
-          <h5 class="c-address">2FwFqqh71mUTENcRe9q4s9AWFgoc8BA9ZU</h5>
+          <h5 class="c-address">0xa1dF4Fe532fB703db561020CCCa434f33B3c97BC</h5>
         </div>
         <button
           onclick="copy_Addr()"
@@ -60,12 +63,14 @@
       <div class="mx-auto custom-container container">
         <img
           class="mx-auto qr-code"
-          src="{% static 'images/qr-code.png' %}"
-          alt=""
+          src="{% static 'images/qr-code-btc-cash.png' %}"
+          alt="Qr code of bicoin cash"
           srcset=""
         />
         <div class="crypto-address text-break text-center fw-bolder">
-          <h5 class="c-address">3FwFqqh71mUTENcRe9q4s9AWFgoc8BA9ZU</h5>
+          <h5 class="c-address">
+            bitcoincash:qqc750cznmt36hzqkl8m0rw4ty8axd6srgeptpj9lq
+          </h5>
         </div>
         <button
           onclick="copy_Addr()"

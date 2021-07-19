@@ -2,15 +2,31 @@
 
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="HTML,CSS,JAVASCRIPT,JS,WEB-DEVELOPMENT,DJANGO,API,E-COMMERCE,DUMMY API, PYTHON, PROGRAMMING, PROTOTYPING, STAGING, CLOUD"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="The purpose od dummy ecom api is to provide placholder or dummy ecom data or products data for prototyping."
+    />
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRF0ZBSZ3D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PRF0ZBSZ3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-PRF0ZBSZ3D');
-</script>
+      gtag("config", "G-PRF0ZBSZ3D");
+    </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -39,7 +55,7 @@
     <style></style>
 
     {% endblock style %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Dummy Ecom Api</title>
   </head>
   <body>
@@ -55,7 +71,9 @@
       role="alert"
     >
       <strong>Dummy Ecom API</strong> is free for use.
-      <a href="{% url 'donation' %}" class="alert-link">Donate</a>
+      <a href="{% url 'donation' %}" title="Donation" class="alert-link"
+        >Donate</a
+      >
       to maintain this project.
       <button
         type="button"
@@ -78,11 +96,14 @@
         </a>
         <div class="navbar-links">
           <ul>
-            <li><a class="active" href="/">Home</a></li>
-            <li><a id="API-ID" onclick="getAPIlink()" href="">API</a></li>
+            <li><a title="Home" class="active" href="/">Home</a></li>
+            <li>
+              <a title="API" id="API-ID" onclick="getAPIlink()" href="">API</a>
+            </li>
 
             <li>
               <a
+                title="Docs"
                 target="_blank"
                 href="https://documenter.getpostman.com/view/15835730/TzmChYYZ"
                 >Documentation</a
@@ -90,12 +111,21 @@
             </li>
 
             <li>
-              <a target="_blank" href="https://github.com/aman162000/"
+              <a
+                title="Github"
+                target="_blank"
+                href="https://github.com/aman162000/"
                 >Github</a
               >
             </li>
             <li>
-              <a id="About-ID" onclick="getABOUTlink()" href="#footer">About</a>
+              <a
+                title="About"
+                id="About-ID"
+                onclick="getABOUTlink()"
+                href="#footer"
+                >About</a
+              >
             </li>
           </ul>
         </div>
@@ -112,6 +142,7 @@
         <br />
         Visit the
         <a
+          title="Repository"
           target="_blank"
           style="color: #ffdf00"
           href="https://github.com/aman162000/dummy-ecom-api"
@@ -121,28 +152,40 @@
       </p>
       <div class="fa-2x d-flex justify-content-center">
         <div class="github mx-3">
-          <a target="_blank" href="https://github.com/aman162000">
+          <a
+            title="Github"
+            target="_blank"
+            href="https://github.com/aman162000"
+          >
             <i class="social fab fa-github"></i
           ></a>
         </div>
         <div class="linkedin mx-3">
-          <a target="_blank" href="https://www.linkedin.com/in/aman-borse/">
+          <a
+            title="Linkedin"
+            target="_blank"
+            href="https://www.linkedin.com/in/aman-borse/"
+          >
             <i class="social fab fa-linkedin"></i
           ></a>
         </div>
         <div class="email mx-3">
-          <a href="mailto: borseaman16@gmail.com."
+          <a title="E-mail" href="mailto: borseaman16@gmail.com."
             ><i class="social fas fa-envelope"></i
           ></a>
         </div>
         <div class="instagram mx-3">
-          <a target="_blank" href=""
+          <a
+            title="Instagram"
+            target="_blank"
+            href="https://www.instagram.com/aman_162000/"
             ><i class="social fab fa-instagram-square"></i
           ></a>
         </div>
       </div>
       <div class="attribution mt-3">
         <a
+          title="Online illustrations by Storyset"
           style="color: #ffdf00"
           target="_blank"
           href="https://storyset.com/online"
