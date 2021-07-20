@@ -5,7 +5,6 @@ from rest_framework.decorators import permission_classes
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from rest_framework.response import Response
-import json
 from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework import generics
@@ -18,6 +17,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token, TokenProxy
 from .serializer import ProductSerializer, CategorySerializer, LoginSerializer
 from fakeEcomAPIs.filters import FiltersWhichAreNotProvidedByLibrary, CategoryFilter
+from .users import Users
 
 #TODO mRErvma8Brzh9B5
 
@@ -56,9 +56,7 @@ class ProductData(generics.ListAPIView):
 
 
 class UserData(APIView):
-    permission_classes = [CustomApiPermission]
+    # permission_classes = [CustomApiPermission]
 
     def get(self,request):
-        f = open (f'{settings.BASE_DIR}\\templates\\users.json', "r")
-        user = json.load(f)
-        return JsonResponse(user,safe=False)
+        return JsonResponse(Users,safe=False)
