@@ -56,7 +56,7 @@ class ProductData(generics.ListAPIView):
 
 
 class UserData(APIView):
-    # permission_classes = [CustomApiPermission]
+    permission_classes = [CustomApiPermission]
 
     def get(self,request):
         return JsonResponse(Users,safe=False)
