@@ -45,6 +45,10 @@ class CategoryData(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     ordering_fields = ['category_name',]
 
+    @method_decorator(cache_page(60*60*1))
+    def dispatch(self, *args, **kwargs):
+        return super(CategoryData,self).dispatch(*args,**kwargs)
+
 class ProductData(generics.ListAPIView):
     permission_classes = [CustomApiPermission]
     serializer_class = ProductSerializer
@@ -54,6 +58,9 @@ class ProductData(generics.ListAPIView):
     ordering_fields = ['product_name', 'product_price', 'product_sales']
     pagination_class = PageNumberPagination
 
+    @method_decorator(cache_page(60*60*1))
+    def dispatch(self, *args, **kwargs):
+        return super(ProductData,self).dispatch(*args,**kwargs)
 
 class UserData(APIView):
     permission_classes = [CustomApiPermission]
