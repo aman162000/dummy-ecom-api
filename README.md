@@ -18,12 +18,11 @@ A Dummy API is useful during development and testing when live data is either un
 
 
 ### TO DO LIST (OPEN FOR CONTRIBUTIONS)
-- dummy cart
-- remove unnecessary routes to utilize query strings
-- add checkout functionality
+- dummy cart.
+- add checkout functionality.
+- add products details in other categories.
 
-
-## Author: <i>Aman Borse</i>
+## Author: <i>Aman</i>
 <a href="https://github.com/aman162000">
 	<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
 </a>
