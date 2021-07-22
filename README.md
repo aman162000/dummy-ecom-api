@@ -1,5 +1,5 @@
 
-# DUMMY PRODUCTS REST API
+# DUMMY E-COM REST API
 ![Made With](https://img.shields.io/badge/Made%20with-Django-68A063?style=for-the-badge&logo=Django)
 
 [Link](https://dummy-ecom-api.herokuapp.com/)
