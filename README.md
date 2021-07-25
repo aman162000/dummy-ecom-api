@@ -20,6 +20,7 @@ A Dummy API is useful during development and testing when live data is either un
 
 
 ### TO DO LIST (OPEN FOR CONTRIBUTIONS)
+- add GraphQL support.
 - dummy cart.
 - add checkout functionality.
 - add products details in other categories.
