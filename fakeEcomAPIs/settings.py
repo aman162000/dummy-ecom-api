@@ -121,7 +121,7 @@ DATABASES = {
 
         'HOST': os.environ['DB_HOST'],
 
-        'PORT': '5432',
+        'PORT': os.environ['DB_PORT'],
 
     }
 }
